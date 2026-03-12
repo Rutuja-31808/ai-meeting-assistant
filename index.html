@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Meeting Assistant</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="header">
+<h2>AI Meeting Assistant</h2>
+<input id="roomId" placeholder="Meeting ID">
+<button onclick="joinMeeting()">Join</button>
+</div>
+
+<div class="main">
+
+<div class="video-area">
+<video id="video" autoplay playsinline muted></video>
+</div>
+
+<div class="chat-area">
+
+<h3>Chat</h3>
+
+<div id="chatBox"></div>
+
+<input id="chatInput" placeholder="Type message">
+<button onclick="sendMessage()">Send</button>
+
+</div>
+
+</div>
+
+<div class="controls">
+
+<button onclick="startCamera()">🎥 Camera</button>
+<button onclick="stopCamera()">❌ Stop</button>
+<button onclick="shareScreen()">🖥 Share</button>
+<button onclick="startSpeech()">🎤 Transcribe</button>
+<button onclick="generateSummary()">🤖 Summary</button>
+<button onclick="downloadNotes()">⬇ Download</button>
+
+</div>
+
+<h3>Transcript</h3>
+<p id="transcript"></p>
+
+<h3>Summary</h3>
+<p id="summary"></p>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
