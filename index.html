@@ -1,46 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>AI Meeting Assistant</title>
-<link rel="stylesheet" href="style.css">
+  <title>AI Meeting Assistant</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Add a grid for multiple video streams */
+    #videoGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+    }
+    video {
+      width: 100%;
+      border: 2px solid #333;
+    }
+  </style>
 </head>
 
 <body>
 
 <div class="header">
-<h2>AI Meeting Assistant</h2>
-<input id="roomId" placeholder="Meeting ID">
-<button onclick="joinMeeting()">Join</button>
+  <h2>AI Meeting Assistant</h2>
+  <input id="roomId" placeholder="Meeting ID">
+  <button onclick="joinMeeting()">Join</button>
 </div>
 
 <div class="main">
 
-<div class="video-area">
-<video id="video" autoplay playsinline muted></video>
-</div>
+  <!-- Video area now supports multiple participants -->
+  <div class="video-area">
+    <div id="videoGrid">
+      <!-- Local video -->
+      <video id="localVideo" autoplay playsinline muted></video>
+    </div>
+  </div>
 
-<div class="chat-area">
-
-<h3>Chat</h3>
-
-<div id="chatBox"></div>
-
-<input id="chatInput" placeholder="Type message">
-<button onclick="sendMessage()">Send</button>
-
-</div>
+  <div class="chat-area">
+    <h3>Chat</h3>
+    <div id="chatBox"></div>
+    <input id="chatInput" placeholder="Type message">
+    <button onclick="sendMessage()">Send</button>
+  </div>
 
 </div>
 
 <div class="controls">
-
-<button onclick="startCamera()">🎥 Camera</button>
-<button onclick="stopCamera()">❌ Stop</button>
-<button onclick="shareScreen()">🖥 Share</button>
-<button onclick="startSpeech()">🎤 Transcribe</button>
-<button onclick="generateSummary()">🤖 Summary</button>
-<button onclick="downloadNotes()">⬇ Download</button>
-
+  <button onclick="startCamera()">🎥 Camera</button>
+  <button onclick="stopCamera()">❌ Stop</button>
+  <button onclick="shareScreen()">🖥 Share</button>
+  <button onclick="startSpeech()">🎤 Transcribe</button>
+  <button onclick="generateSummary()">🤖 Summary</button>
+  <button onclick="downloadNotes()">⬇ Download</button>
 </div>
 
 <h3>Transcript</h3>
