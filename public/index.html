@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Meeting Assistant</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+  margin:0;
+  background:#202124;
+  color:white;
+  font-family:Arial;
+}
+
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 20px;
+  background:#1a1a1a;
+}
+
+.main{
+  display:flex;
+  height:70vh;
+}
+
+.video-area{
+  flex:3;
+  padding:10px;
+}
+
+#videoGrid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap:10px;
+}
+
+video{
+  width:100%;
+  border-radius:10px;
+  background:black;
+}
+
+.chat-area{
+  flex:1;
+  background:#111;
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+}
+
+#chatBox{
+  flex:1;
+  overflow-y:auto;
+  margin-bottom:10px;
+  border:1px solid #444;
+  padding:5px;
+}
+
+.controls{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:#111;
+  padding:10px;
+  text-align:center;
+}
+
+button{
+  padding:8px 14px;
+  margin:5px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+#participantCount{
+  font-size:14px;
+  color:#aaa;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+  <h2>AI Meeting Assistant</h2>
+
+  <div>
+    <input id="username" placeholder="Your Name">
+    <input id="roomId" placeholder="Meeting ID">
+    <button onclick="joinMeeting()">Join</button>
+  </div>
+
+  <div id="participantCount">
+    Participants: 1
+  </div>
+
+</div>
+
+<div class="main">
+
+<div class="video-area">
+
+<div id="videoGrid">
+
+<video id="localVideo" autoplay playsinline muted></video>
+
+</div>
+
+</div>
+
+<div class="chat-area">
+
+<h3>Chat</h3>
+
+<div id="chatBox"></div>
+
+<input id="chatInput" placeholder="Type message">
+
+<button onclick="sendMessage()">Send</button>
+
+</div>
+
+</div>
+
+<div class="controls">
+
+<button onclick="startCamera()">🎥 Camera</button>
+
+<button onclick="stopCamera()">❌ Stop</button>
+
+<button onclick="shareScreen()">🖥 Share</button>
+
+<button onclick="startSpeech()">🎤 Transcribe</button>
+
+<button onclick="generateSummary()">🤖 Summary</button>
+
+<button onclick="downloadNotes()">⬇ Download</button>
+
+<button onclick="leaveMeeting()" class="leave-btn">
+  Leave Meeting
+</button>
+
+<button>TEST BUTTON</button>
+</div>
+
+<h3>Transcript</h3>
+
+<p id="transcript"></p>
+
+<h3>Summary</h3>
+
+<p id="summary"></p>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
